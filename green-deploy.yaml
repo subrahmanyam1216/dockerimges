@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: green-deploy
+  labels:
+    app: frontend
+    color: green
+spec:
+  replicas: 1
+  template:
+    metadata:
+      name: green-deploy
+      labels:
+        app: frontend
+        color: green
+    spec:
+      containers:
+        - image: devopswithcloudhub/python_webpage:green
+          name: green-deploy
+          ports:
+            - containerPort: 8080
+  selector:
+    matchLabels:
+      app: frontend
+      color: green
